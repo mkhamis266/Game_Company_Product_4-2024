@@ -188,7 +188,7 @@ $(document).ready(function () {
     ctx = canvas.getContext('2d');
     player = { x: 100, y: canvas.height / 2 + 20, size: 50 };
     elements.length = 0;
-    timer.seconds = 30;
+    timer.seconds = 3000;
     score = 987654000;
     drawScore();
     // Event listeners
