@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Novo-EOS</title>
+  <link rel="stylesheet" href="css/style.css?v=2" />
+</head>
+
+<body>
+  <div id="startPage">
+    <div id="gotoInstructionsButton"></div>
+  </div>
+  <div id="instructionsPage">
+    <div id="startButton"></div>
+  </div>
+  <div id="gamePage">
+    <div class="game-container">
+      <div class="header">
+        <div class="timeContainer">
+          <img src="img/time.png" height="40" alt="" />
+          <span id="timer">30 sec</span>
+        </div>
+        <div id="score">
+          <span>7</span>
+          <span>8</span>
+          <span>5</span>
+          ,
+          <span>7</span>
+          <span>8</span>
+          <span>5</span>
+          ,
+          <span>7</span>
+          <span>8</span>
+          <span>5</span>
+        </div>
+      </div>
+      <div class="canvasContainer">
+        <canvas id="gameCanvas"></canvas>
+        <div id="images">
+          <img id="virusImg" src="img/Virus.png" alt="" />
+          <img id="medicineImg" src="img/medicine.png" alt="" />
+          <img id="playerImg" src="img/Man_1.png" alt="" />
+          <img id="virusCollisionImg" src="img/collision.png" alt="" />
+          <img id="medicineCollisionImg" src="img/bounes.png" alt="" />
+        </div>
+      </div>
+      <div id="footer"></div>
+    </div>
+  </div>
+  <div id="finalPage">
+    <div id="playAgainButton"></div>
+  </div>
+  <script src="js/code.jquery.com_jquery-3.7.0.min.js"></script>
+  <script src="js/scripts.js?v=7"></script>
+</body>
+
+</html>

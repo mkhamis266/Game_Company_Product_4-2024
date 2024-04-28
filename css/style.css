@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  width: 100vw;
+  height: 100svh;
+  overscroll-behavior: contain;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* start page */
+
+#startPage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: url(../img/stratPageBG.jpg);
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+#gotoInstructionsButton {
+  position: absolute;
+  top: 78%;
+  left: 40%;
+  width: 20%;
+  height: 9%;
+}
+
+#instructionsPage {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: url(../img/instructionPageBG.jpg);
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+#startButton {
+  position: absolute;
+  top: 78%;
+  left: 40%;
+  width: 22%;
+  height: 9%;
+}
+
+#gamePage {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: url(../img/gameBG.jpg);
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.game-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  /* padding: 1% 3% 1% 3%; */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 35px;
+}
+
+.timeContainer {
+  display: flex;
+  align-items: center;
+  margin: 2% 0 0 3%;
+}
+
+#timer {
+  margin-left: 5px;
+  font-weight: bold;
+  color: #e6553f;
+}
+
+#score {
+  margin: 2% 3% 0 0;
+  display: flex;
+  align-items: flex-end;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+}
+#score span{
+  display: block;
+  margin-right: 1px;
+  border-radius: 3px;
+  border: 2px solid #fff;
+}
+.canvasContainer {
+  width: 100%;
+  flex-grow: 1;
+}
+
+/* game page */
+
+#timer {
+  font-size: 32px;
+}
+
+#images {
+  display: none;
+}
+
+/* final page */
+
+#finalPage {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: url(../img/finlaBG.jpg);
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+#playAgainButton {
+  position: relative;
+  top: 78%;
+  left: 38%;
+  width: 25%;
+  height: 10%;
+}
