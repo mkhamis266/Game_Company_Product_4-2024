@@ -35,7 +35,7 @@ $(document).ready(function () {
   const virusImage = document.querySelector('#virusImg');
   const medicineImage = document.querySelector('#medicineImg');
   let elementInternal = null;
-  const timer = { seconds: 30000, interval: null };
+  const timer = { seconds: 30, interval: null };
 
   // Create junk food items
   function createElement() {
@@ -67,7 +67,7 @@ $(document).ready(function () {
   }
 
   function isGameOver() {
-    return lives <= 0 || timer.seconds <= 0;
+    return timer.seconds <= 0;
   }
 
   function drawElements() {
@@ -111,11 +111,51 @@ $(document).ready(function () {
   }
 
   function drawScore() {
+    let spanValues = [];
+    let scoreValue = score;
+    let spanValue = Math.floor(scoreValue / 100000000);
+    spanValues.push(spanValue);
+    scoreValue -= spanValue * 100000000;
+
+    spanValue = Math.floor(scoreValue / 10000000);
+    spanValues.push(spanValue);
+    scoreValue -= spanValue * 10000000;
+
+    spanValue = Math.floor(scoreValue / 1000000);
+    spanValues.push(spanValue);
+    scoreValue -= spanValue * 1000000;
+
+    spanValue = Math.floor(scoreValue / 100000);
+    spanValues.push(spanValue);
+    scoreValue -= spanValue * 100000;
+
+    spanValue = Math.floor(scoreValue / 10000);
+    spanValues.push(spanValue);
+    scoreValue -= spanValue * 10000;
+
+    spanValue = Math.floor(scoreValue / 1000);
+    spanValues.push(spanValue);
+    scoreValue -= spanValue * 1000;
+
+    spanValue = Math.floor(scoreValue / 100);
+    spanValues.push(spanValue);
+    scoreValue -= spanValue * 100;
+
+    spanValue = Math.floor(scoreValue / 10);
+    spanValues.push(spanValue);
+    scoreValue -= spanValue * 10;
+
+    spanValue = scoreValue;
+    for (var i = 0; i < spanValues.length; i++) {
+      $('#score span')[i].innerHTML = spanValues[i];
+    }
+    // .forEach((element, index) => {
+    //   $(element).html(spanValues[index]);
+    // });
     // $('#lives').html(
     //   `<img src="img/lives/3.png" height="40" alt="" /> <span>: ${score}</span>`
     // );
   }
-
   function checkCollisionWithPlayer(element) {
     return (
       element.x >= player.x - player.size / 2 - 50 &&
@@ -188,7 +228,7 @@ $(document).ready(function () {
     ctx = canvas.getContext('2d');
     player = { x: 100, y: canvas.height / 2 + 20, size: 50 };
     elements.length = 0;
-    timer.seconds = 3000;
+    timer.seconds = 30;
     score = 987654000;
     drawScore();
     // Event listeners
