@@ -39,32 +39,32 @@ body {
 
 #goToWomanPage {
   position: absolute;
-  top: 79%;
-  left: 9%;
-  width: 23%;
-  height: 10%;
+  top: 78%;
+  left: 8%;
+  width: 25%;
+  height: 12%;
 }
 #goToManPage {
   position: absolute;
-  top: 79%;
-  left: 72%;
-  width: 23%;
-  height: 10%;
+  top: 78%;
+  left: 71%;
+  width: 25%;
+  height: 12%;
 }
 
 #manPage .goToInstructions{
   position: absolute;
-  top: 79%;
-  left: 28%;
-  width: 24%;
-  height: 10%;
+  top: 78%;
+  left: 27%;
+  width: 26%;
+  height: 12%;
 }
 #womanPage .goToInstructions{
   position: absolute;
-  top: 79%;
-  left: 52%;
-  width: 24%;
-  height: 10%;
+  top: 78%;
+  left: 51%;
+  width: 26%;
+  height: 12%;
 }
 #instructionsPage {
   background-image: url(../img/instructionPageBG.jpg);
@@ -182,9 +182,9 @@ body {
 #playAgainButton {
   position: relative;
   top: 78%;
-  left: 38%;
+  left: 37%;
   width: 25%;
-  height: 10%;
+  height: 12%;
 }
 #finalScore{
   position: absolute;
@@ -197,8 +197,8 @@ body {
 }
 #goToFinalPage{
   position: absolute;
-  top: 79%;
-  left: 38%;
-  width: 24%;
-  height: 10%;
+  top: 78%;
+  left: 37%;
+  width: 26%;
+  height: 12%;
 }
