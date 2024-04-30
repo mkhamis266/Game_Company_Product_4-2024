@@ -1,3 +1,4 @@
+@import url('https://fonts.cdnfonts.com/css/futura-std-4');
 * {
   margin: 0;
   padding: 0;
@@ -11,6 +12,7 @@ body {
   overscroll-behavior: contain;
   -webkit-user-select: none;
   user-select: none;
+  font-family: 'Futura Std', sans-serif;
 }
 .page{
   position: relative;
@@ -70,10 +72,10 @@ body {
 
 #startButton {
   position: absolute;
-  top: 78%;
-  left: 40%;
-  width: 22%;
-  height: 9%;
+    top: 78%;
+    left: 37%;
+    width: 25%;
+    height: 14%;
 }
 
 #gamePage {
@@ -127,6 +129,7 @@ body {
 #finalScore span
 {
   display: block;
+  font-weight: bold;
 }
 #score .score-number,
 #finalScore .score-number
