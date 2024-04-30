@@ -4,36 +4,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Novo-EOS</title>
+  <title>Abrysvo-Launch Game</title>
   <link rel="stylesheet" href="css/style.css?v=2" />
 </head>
 
 <body>
-  <div id="startPage">
-    <div id="gotoInstructionsButton"></div>
+  <div id="startPage" class="page">
+    <div id="goToWomanPage"></div>
+    <div id="goToManPage"></div>
   </div>
-  <div id="instructionsPage">
+  <div id="womanPage" class="page">
+    <div class="goToInstructions"></div>
+  </div>
+  <div id="manPage" class="page">
+    <div class="goToInstructions"></div>
+  </div>
+  <div id="instructionsPage" class="page">
     <div id="startButton"></div>
   </div>
-  <div id="gamePage">
+  <div id="gamePage" class="page">
     <div class="game-container">
       <div class="header">
         <div class="timeContainer">
-          <img src="img/time.png" height="40" alt="" />
+          <img src="img/clock.png" height="40" alt="" />
+          <span>Time Limit:</span>
           <span id="timer">30 sec</span>
         </div>
         <div id="score">
-          <span>7</span>
-          <span>8</span>
-          <span>5</span>
-          ,
-          <span>7</span>
-          <span>8</span>
-          <span>5</span>
-          ,
-          <span>7</span>
-          <span>8</span>
-          <span>5</span>
+          <span class="score-number">0</span>
+          <span class="score-number">0</span>
+          <span class="score-number">0</span>
+          <img src="img/coma.png" class="coma">
+          <span class="score-number">0</span>
+          <span class="score-number">0</span>
+          <span class="score-number">0</span>
+          <img src="img/coma.png" class="coma">
+          <span class="score-number">0</span>
+          <span class="score-number">0</span>
+          <span class="score-number">0</span>
         </div>
       </div>
       <div class="canvasContainer">
@@ -41,7 +49,8 @@
         <div id="images">
           <img id="virusImg" src="img/Virus.png" alt="" />
           <img id="medicineImg" src="img/medicine.png" alt="" />
-          <img id="playerImg" src="img/Man_1.png" alt="" />
+          <img id="womanAvatar" src="img/woman.png" alt="" />
+          <img id="manAvatar" src="img/Man.png" alt="" />
           <img id="virusCollisionImg" src="img/collision.png" alt="" />
           <img id="medicineCollisionImg" src="img/bounes.png" alt="" />
         </div>
@@ -49,7 +58,23 @@
       <div id="footer"></div>
     </div>
   </div>
-  <div id="finalPage">
+  <div id="finalScorePage" class="page">
+    <div id="finalScore">
+      <span class="score-number">0</span>
+      <span class="score-number">0</span>
+      <span class="score-number">0</span>
+      <img src="img/coma.png" class="coma">
+      <span class="score-number">0</span>
+      <span class="score-number">0</span>
+      <span class="score-number">0</span>
+      <img src="img/coma.png" class="coma">
+      <span class="score-number">0</span>
+      <span class="score-number">0</span>
+      <span class="score-number">0</span>
+    </div>
+    <div id="goToFinalPage"></div>
+  </div>
+  <div id="finalPage" class="page">
     <div id="playAgainButton"></div>
   </div>
   <script src="js/code.jquery.com_jquery-3.7.0.min.js"></script>

@@ -2,6 +2,7 @@ $(document).ready(function () {
   let canvasContainer;
   let canvas;
   let ctx;
+  let avatarImage;
   const collisionTypes = {
     virus: 'virus',
     medicine: 'medicine',
@@ -17,7 +18,7 @@ $(document).ready(function () {
   // Game state variables
 
   let isDraggingPlayer = false;
-  let score = 987654000;
+  let score = 902654368;
 
   let animationFrameId = null;
   const hitSound = new Audio('sound/hit.mp3');
@@ -25,7 +26,7 @@ $(document).ready(function () {
   // Set canvas dimensions and handle window resize
   function setCanvasDimensions() {
     canvas.width = canvasContainer.clientWidth;
-    canvas.height = canvasContainer.clientHeight - 40;
+    canvas.height = canvasContainer.clientHeight - 10;
   }
 
   window.addEventListener('resize', setCanvasDimensions);
@@ -45,10 +46,11 @@ $(document).ready(function () {
       image: isVirus ? virusImage : medicineImage,
       x: canvas.width + 20,
       y: Math.random() * canvas.height,
-      speedX: -3.5,
+      speedX: getRandomNumber(-8.5, -3.5),
       speedY: 0,
+      size: getRandomNumber(70, 120),
     };
-
+    if (element.y + element.size > canvas.height) element.y -= element.size;
     elements.push(element);
   }
 
@@ -76,7 +78,13 @@ $(document).ready(function () {
       element.x += element.speedX;
       element.y += element.speedY;
 
-      ctx.drawImage(element.image, element.x - 10, element.y - 10, 90, 90);
+      ctx.drawImage(
+        element.image,
+        element.x - 10,
+        element.y - 10,
+        element.size,
+        element.size
+      );
 
       if (checkCollisionWithPlayer(element)) {
         handleCollision(element);
@@ -91,7 +99,7 @@ $(document).ready(function () {
 
   function drawPlayer() {
     ctx.drawImage(
-      $('#playerImg')[0],
+      $('#' + avatarImage)[0],
       player.x - player.size / 2,
       player.y - player.size,
       player.size,
@@ -111,50 +119,10 @@ $(document).ready(function () {
   }
 
   function drawScore() {
-    let spanValues = [];
-    let scoreValue = score;
-    let spanValue = Math.floor(scoreValue / 100000000);
-    spanValues.push(spanValue);
-    scoreValue -= spanValue * 100000000;
-
-    spanValue = Math.floor(scoreValue / 10000000);
-    spanValues.push(spanValue);
-    scoreValue -= spanValue * 10000000;
-
-    spanValue = Math.floor(scoreValue / 1000000);
-    spanValues.push(spanValue);
-    scoreValue -= spanValue * 1000000;
-
-    spanValue = Math.floor(scoreValue / 100000);
-    spanValues.push(spanValue);
-    scoreValue -= spanValue * 100000;
-
-    spanValue = Math.floor(scoreValue / 10000);
-    spanValues.push(spanValue);
-    scoreValue -= spanValue * 10000;
-
-    spanValue = Math.floor(scoreValue / 1000);
-    spanValues.push(spanValue);
-    scoreValue -= spanValue * 1000;
-
-    spanValue = Math.floor(scoreValue / 100);
-    spanValues.push(spanValue);
-    scoreValue -= spanValue * 100;
-
-    spanValue = Math.floor(scoreValue / 10);
-    spanValues.push(spanValue);
-    scoreValue -= spanValue * 10;
-
-    spanValue = scoreValue;
+    let spanValues = score.toString().split('');
     for (var i = 0; i < spanValues.length; i++) {
-      $('#score span')[i].innerHTML = spanValues[i];
+      $('#score .score-number')[i].innerHTML = spanValues[i];
     }
-    // .forEach((element, index) => {
-    //   $(element).html(spanValues[index]);
-    // });
-    // $('#lives').html(
-    //   `<img src="img/lives/3.png" height="40" alt="" /> <span>: ${score}</span>`
-    // );
   }
   function checkCollisionWithPlayer(element) {
     return (
@@ -173,15 +141,15 @@ $(document).ready(function () {
       collision.collisionType = collisionTypes.virus;
       hitSound.play();
       tingSound.currentTime = 0;
-      score -= 1000;
+      score -= 10000;
     } else {
       collision.collisionType = collisionTypes.medicine;
-      score += 1000;
+      score += 1000000;
       hitSound.currentTime = 0;
       tingSound.play();
     }
 
-    isDraggingPlayer = false;
+    // isDraggingPlayer = false;
     setTimeout(() => {
       collision.isCollision = false;
       collision.collisionType = collisionTypes.noCollision;
@@ -207,11 +175,10 @@ $(document).ready(function () {
     );
   }
 
-  function gotoInstructionsPage() {
-    $('#startPage').hide();
-    $('#instructionsPage').show();
+  function openPage(pageId) {
+    $('.page').hide();
+    $('#' + pageId).show();
   }
-
   function startGame() {
     $('#instructionsPage').hide();
     $('#gamePage').show();
@@ -229,7 +196,7 @@ $(document).ready(function () {
     player = { x: 100, y: canvas.height / 2 + 20, size: 50 };
     elements.length = 0;
     timer.seconds = 30;
-    score = 987654000;
+    score = 100067000;
     drawScore();
     // Event listeners
     canvas.addEventListener('touchstart', handleTouchStart);
@@ -262,9 +229,13 @@ $(document).ready(function () {
 
   function gameOver() {
     cancelAnimationFrame(animationFrameId);
+    let spanValues = score.toString().split('');
+    for (var i = 0; i < spanValues.length; i++) {
+      $('#finalScore .score-number')[i].innerHTML = spanValues[i];
+    }
     resetGame();
     $('#gamePage').hide();
-    $('#finalPage').show();
+    $('#finalScorePage').show();
   }
 
   function resetGame() {
@@ -329,6 +300,9 @@ $(document).ready(function () {
     );
   }
 
+  function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
   // $(document).on('contextmenu', function (e) {
   //   e.preventDefault();
   // });
@@ -338,7 +312,21 @@ $(document).ready(function () {
   });
 
   /* handle buttons */
-  $('#gotoInstructionsButton').on('click', gotoInstructionsPage);
+
+  $('#goToWomanPage').on('click', () => {
+    openPage('womanPage');
+    avatarImage = 'womanAvatar';
+  });
+  $('#goToManPage').on('click', () => {
+    openPage('manPage');
+    avatarImage = 'manAvatar';
+  });
+  $('.goToInstructions').on('click', () => {
+    openPage('instructionsPage');
+  });
+  $('#goToFinalPage').on('click', () => {
+    openPage('finalPage');
+  });
   $('#startButton').on('click', startGame);
   $('#playAgainButton').on('click', playAgain);
 });
